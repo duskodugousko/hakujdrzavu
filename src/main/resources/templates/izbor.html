@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1>Izbor opcija :</h1>
+    <p>Korisnik: <span th:unless="${session == null}" th:text="${session.user.name}" ></span></p>
+
+    <p><a th:href="@{/vesti/lista}">Vesti</a></p>
+
+    <p><a th:href="@{/obavestenja/lista}">Obaveštenja</a></p>
+</div>
+
+</body>
+</html>

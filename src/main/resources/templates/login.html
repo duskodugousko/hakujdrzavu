@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="login-wrapper">
+        <div class="login-content">
+            <form th:action="@{/register}" th:object="${user}" method="POST">
+                <input type="hidden" th:field="*{type}">
+
+                <div class="form-group row">
+                    <label for="username" class="col-sm-4 col-form-label">Korisnicko ime:</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="*{name}" class="form-control" id="username"
+                               placeholder="Unesite korisnicko ime" required="required"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-sm-4 col-form-label">Lozinka:</label>
+                    <div class="col-sm-8">
+                        <input type="password" th:field="*{password}" class="form-control" id="password"
+                               placeholder="Unesite korisnicko ime" required="required"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Prijava</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

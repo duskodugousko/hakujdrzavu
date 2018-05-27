@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" layout:decorator="layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <form th:action="@{/obavestenja}" method="POST" th:object="${obavestenje}">
+        <input type="hidden" th:field="*{id}">
+
+        <!--<div class="form-group row">-->
+            <!--<label for="title" class="col-sm-2 col-form-label">Naslov</label>-->
+            <!--<div class="col-md-10">-->
+                <!--<input id="title" class="form-control" type="text" th:field="*{title}"-->
+                       <!--placeholder="Unesite naslov vesti" required="required"/>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <div class="form-group row">
+            <label for="title" class="col-sm-2 col-form-label">Naslov</label>
+            <div class="col-md-10">
+                <input id="title" class="form-control" type="text" th:field="*{title}"
+                       placeholder="Unesite naslov vesti" required="required"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="message" class="col-sm-2 col-form-label">Opis</label>
+            <div class="col-md-10">
+                <textarea id="message" class="form-control" type="text" th:field="*{message}"
+                          placeholder="Unesite naslov vesti" required="required">
+            </textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="city" class="col-sm-2 col-form-label">Grad</label>
+            <div class="col-md-10">
+                <input id="city" class="form-control" type="text" th:field="*{city}"
+                       placeholder="Unesite grad" required="required"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="adress" class="col-sm-2 col-form-label">Adresa</label>
+            <div class="col-md-10">
+                <input id="adress" class="form-control" type="text" th:field="*{adress}"
+                       placeholder="Unesite adresu " required="required"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="publishDate" class="col-sm-2 col-form-label">Datum</label>
+            <div class="col-md-10">
+                <input id="publishDate" class="form-control datepicker" type="text" th:field="*{publishDate}"
+                       placeholder="Unesite datum kada želite da se objavi vest" required="required"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <button type="submit" class="btn btn-primary">Objavi</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

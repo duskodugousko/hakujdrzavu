@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" layout:decorator="layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+
+        .dodaj-dugme{
+            margin-bottom: 10px;
+        }
+        .dodaj-dugme a{
+            background-color: #1a4073;
+            border: none;
+            padding: 8px 12px !important;
+            text-align: center;
+            color: white;
+        }
+        .dodaj-dugme a:hover{
+            text-decoration: none;
+
+        }
+
+        .background-color-main{
+            background-color: #1a4073 !important;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div>
+        <!--<button type="button" class="btn btn-primary dodaj-dugme" th:href="@{/obavestenja/obavestenje}">+ OBAVEŠTENJE </button>-->
+        <div class="dodaj-dugme"><a  th:href="@{/obavestenja/obavestenje}">+NOVO OBAVEŠTENJE</a></div>
+        <table class="table">
+            <tr>
+                <td>Naslov</td>
+                <td>Grad</td>
+                <td>Adresa</td>
+                <td>Datum</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr th:each="obavestenje: ${obavestenja}">
+                <td><a th:text="${obavestenje.title}"></a></td>
+                <td th:text="${obavestenje.city}"></td>
+                <td th:text="${obavestenje.adress}"></td>
+                <td th:text="${obavestenje.publishDate}"></td>
+                <td><a  th:href="@{/obavestenja/obavestenje(id=${obavestenje.id})}"><i class="fa fa-edit"></i></a></td>
+                <td>
+                    <a class="new-btn delete-btn"  th:data-url="@{/obavestenja/obrisiObavestenje(obavestenjeId=${obavestenje.id})}">
+                        <i class="fa fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

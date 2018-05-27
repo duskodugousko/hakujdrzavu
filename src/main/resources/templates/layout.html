@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+    <!--Font awsome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!--Custom css-->
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+
+    <style>.img-responsive{
+        max-width: 100%;}
+    .max-width120{
+        max-width:120px
+    }</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container"><a class="navbar-brand" href="/">
+        <img src="/img/logo.png" alt="" style="width:290px; margin-bottom:-5px">
+    </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02" style="position: relative;">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="http://code.test">Početna <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://code.test/dashboard">Moja eUprava</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="http://code.test/e-usluge">eUsluge</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="http://code.test/pomoc">Pomoć</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="http://code.test/kontakt">Kontakt</a>
+                </li>
+            </ul>
+            <div class="lang">
+                <div id="cirilica">Ћир</div>
+                <div id="latinica">Lat</div>
+            </div>
+            <div class="form-inline" id="search-btn">
+                <button class="btn btn-outline-light"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="bg-primary">
+    <div class="container">
+        <div class="row nav-content">
+            <div class="col-sm-3">
+                <img th:src="@{'/img/' + ${logoName}}" alt="" class="img-responsive image_header"
+                                       style="margin-top: 20px;"
+                th:classappend="${logoName!='vodovod-logo.png'} ? 'max-width120' : ''" />
+            </div>
+            <div class="col-sm-8 nav_header_container">
+                <div class="nav_header"><h1 class="display-4" th:text="${naslov}"></h1>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing.</p></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+<div class="col-md-3">
+    <div class="card border-light mb-3"  th:if="${!login}">
+        <div class="card-header">Navigacija</div>
+        <div class="card-body text-secondary">
+            <div class="nav flex-column nav-pills">
+                <a th:href="@{/vesti/lista}" class="nav-link ">
+                    Vesti
+                </a>
+                <a th:href="@{/obavestenja/lista}" class="nav-link ">
+                    Obaveštenja
+                </a>
+                <a th:href="@{/login}" class="nav-link">
+                    Odjava
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div th:classappend="${login} ? col-md-12 : col-md-9">
+    <div layout:fragment="content" class="m-5">
+    </div>
+</div>
+    </div>
+</div>
+<!--<div class="container">-->
+    <!--<div class="row pt-3">-->
+        <!--<div class="col-md-3" th:if="${!login}">-->
+            <!--<a th:href="@{/vesti/lista}" class="nav-link ">-->
+                <!--Vesti-->
+            <!--</a>-->
+            <!--<a th:href="@{/obavestenja/lista}" class="nav-link ">-->
+                <!--Obaveštenja-->
+            <!--</a>-->
+            <!--<a th:href="@{/login}" class="nav-link active">-->
+                <!--Odjava-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div th:classappend="${login} ? col-md-12 : col-md-9">-->
+            <!--<div layout:fragment="content" class="m-5">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+<!--</div>-->
+
+
+<!--Bootstrap js-->
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
+<!--Jquery-->
+<!--<script th:src="@{/scripts/jquery-1.12.4.min.js}"></script>-->
+<!--<script th:src="@{/scripts/jquery-ui-1.9.2.min.js}"></script>-->
+
+<!--Custom js-->
+<script th:src="@{/js/main.js}"></script>
+
+<script src="/js/cyrlatconverter.min.js"></script>
+
+<script>
+    $('#search-btn').on('click', function (e) {
+        $('.search-box-container').toggle();
+    })
+    let CyrLat = new CyrLatConverter('body').init({
+        onClickCyr: '#cirilica',
+        onClickLat: '#latinica',
+        cookieDuration: 9999,
+    });
+
+    $('#cirilica').click(function () {
+        CyrLat.L2C();
+    });
+
+    $('#latinica').click(function () {
+        CyrLat.C2L();
+    });
+</script>
+
+
+</body>
+</html>

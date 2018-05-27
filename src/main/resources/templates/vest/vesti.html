@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+       xmlns="http://www.w3.org/1999/xhtml"
+       layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+
+        .dodaj-dugme{
+            margin-bottom: 10px;
+        }
+        .dodaj-dugme a{
+            background-color: #1a4073;
+            border: none;
+            padding: 8px 12px !important;
+            text-align: center;
+            color: white;
+        }
+        .dodaj-dugme a:hover{
+            text-decoration: none;
+
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div>
+        <div class="dodaj-dugme"><a th:href="@{/vesti/vest}">+NOVA VEST</a></div>
+        <table class="table">
+            <tr>
+                <td>Naslov</td>
+                <td>Poruka</td>
+                <td>Datum</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr th:each="vest:${vesti}">
+                <td><a th:text="${vest.title}"></a></td>
+                <td th:text="${vest.message}"></td>
+                <td th:text="${vest.publishDate}"></td>
+                <td><a th:href="@{/vesti/vest(id=${vest.id})}"><i class="fa fa-edit"></i></a></td>
+                <td>
+                    <a class="new-btn delete-btn"  th:data-url="@{/vesti/obrisiVest(vestId=${vest.id})}">
+                        <i class="fa fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
